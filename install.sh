@@ -24,25 +24,26 @@ PACOTES=(
     wget
     curl
     htop
-    fastfetch
-    discord
     btop
     nvtop
     flatpak
+    fastfetch
     noisetorch
     pavucontrol
     firefox
     spotify
     cosmic-store
+    fish
+    qbittorrent
+    obs-studio
+    telegram-desktop
+    onlyoffice
+    discord
 )
 
 # Lista de pacotes AppImage
 APPIMAGE=(
-    Vscodium
-    Telegram
     Appimage-Store
-    Obsstudio
-    Onlyoffice
 )
 
 # Lista de pacotes do AUR
@@ -61,15 +62,18 @@ if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]]; then
     apt update && apt upgrade -y
 
     for pacote in "${PACOTES[@]}"; do
-        apt install -y "$pacote"
-        echo "Pacote instalado: $pacote"
+        if apt-cache show "$pacote" &>/dev/null; then
+            apt install -y "$pacote"
+            echo "Pacote instalado: $pacote"
+        else
+            echo "Pacote $pacote não encontrado nos repositórios. Pulando."
+        fi
     done
 
-    # Flatpak - adiciona Flathub
+    # instalando pacotes em formato flatpak
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-    # Discord via Flatpak (não está no repositório oficial)
-    flatpak install -y flathub com.discordapp.Discord
+    flatpak install -y flathub com.mattjakeman.ExtensionManager
+    flatpak install flathub com.vscodium.codium
 
     instalar_appimagesup
 
@@ -85,8 +89,6 @@ if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]]; then
 
     instalar_universal
     
-    mkdir .icons && cd .icons && git clone https://github.com/SylEleuth/gruvbox-plus-icon-pack.git
-
 elif [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
     echo "Sistema baseado em Arch Linux"
 
@@ -95,12 +97,16 @@ elif [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
 
     if ! command -v yay &>/dev/null; then
         echo "yay não encontrado. Instalando yay..."
-       pacman -S yay --noconfirm
+        pacman -S yay --noconfirm
     fi
 
     for pacote in "${PACOTES[@]}"; do
-        pacman -S --noconfirm "$pacote"
-        echo "Pacote instalado: $pacote"
+        if pacman -Si "$pacote" &>/dev/null; then
+            pacman -S --noconfirm "$pacote"
+            echo "Pacote instalado: $pacote"
+        else
+            echo "Pacote $pacote não encontrado nos repositórios. Pulando."
+        fi
     done
 
     instalar_appimagesup
@@ -124,8 +130,12 @@ elif [[ "$ID" == "fedora" || "$ID_LIKE" == *"fedora"* ]]; then
     dnf upgrade -y
 
     for pacote in "${PACOTES[@]}"; do
-        dnf install -y "$pacote"
-        echo "Pacote instalado: $pacote"
+        if dnf info "$pacote" &>/dev/null; then
+            dnf install -y "$pacote"
+            echo "Pacote instalado: $pacote"
+        else
+            echo "Pacote $pacote não encontrado nos repositórios. Pulando."
+        fi
     done
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -152,8 +162,12 @@ elif [[ "$ID" == "debian" || "$ID_LIKE" == *"debian"* ]]; then
     apt update && apt upgrade -y
 
     for pacote in "${PACOTES[@]}"; do
-        apt install -y "$pacote"
-        echo "Pacote instalado: $pacote"
+        if apt-cache show "$pacote" &>/dev/null; then
+            apt install -y "$pacote"
+            echo "Pacote instalado: $pacote"
+        else
+            echo "Pacote $pacote não encontrado nos repositórios. Pulando."
+        fi
     done
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -171,7 +185,7 @@ elif [[ "$ID" == "debian" || "$ID_LIKE" == *"debian"* ]]; then
         echo "Pacote AppImage instalado: $pacote"
     done
 
-     instalar_universal
+    instalar_universal
 
 else
     echo "Distribuição desconhecida. Abortando."
