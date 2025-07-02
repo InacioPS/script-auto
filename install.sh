@@ -72,8 +72,8 @@ if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]]; then
 
     # instalando pacotes em formato flatpak
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    flatpak install -y flathub com.mattjakeman.ExtensionManager
-    flatpak install flathub com.vscodium.codium
+    flatpak install -y flathub org.onlyoffice.desktopeditors
+    flatpak install -y flathub com.vscodium.codium
 
     instalar_appimagesup
 
@@ -109,6 +109,11 @@ elif [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
         fi
     done
 
+    # instalando pacotes em formato flatpak
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak install -y flathub org.onlyoffice.desktopeditors
+    flatpak install -y flathub com.vscodium.codium
+    
     instalar_appimagesup
 
     if ! command -v app &>/dev/null; then
@@ -191,3 +196,5 @@ else
     echo "Distribuição desconhecida. Abortando."
     exit 1
 fi
+
+
