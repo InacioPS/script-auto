@@ -89,7 +89,7 @@ if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]]; then
 
     instalar_universal
     
-elif [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
+elif [[ "$ID" == "arch" || "$ID" == "cachyos" || "$ID_LIKE" == *"arch"* ]]; then
     echo "Sistema baseado em Arch Linux"
 
     echo "Atualizando o sistema..."
@@ -109,7 +109,7 @@ elif [[ "$ID" == "arch" || "$ID_LIKE" == *"arch"* ]]; then
         fi
     done
 
-    # instalando pacotes em formato flatpak
+     # instalando pacotes em formato flatpak
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install -y flathub org.onlyoffice.desktopeditors
     flatpak install -y flathub com.vscodium.codium
@@ -196,5 +196,3 @@ else
     echo "Distribuição desconhecida. Abortando."
     exit 1
 fi
-
-
