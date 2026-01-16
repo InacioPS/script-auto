@@ -3,19 +3,19 @@ Esse script é bem simples e tem a proposta de servir para a maioria das bases l
 
 A única coisa necessária para facilitar a sua vida e fazer uma listagem dos pacotes instalado por você, depois disso é só colar o nome dos pacotes dentro da linha com:
 
-```bash
+<pre>
 PACOTES=(
 "NOME DO PACOTE"
 fish
 discord
 )
-```
+</pre>
 
-```bash
+<pre>
 AUR_PACOTES=(
 asusctl
 )
-```
+</pre>
 
 > [!IMPORTANT]
 >
