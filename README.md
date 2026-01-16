@@ -1,5 +1,5 @@
 # Script de automação de instalação de pacotes
-Esse script é bem simples e tem a proposta de servir para a maioria das bases linux, sendo a mais beneficiadas a base *Archlinux* por conta do *Aur*.
+Esse script é bem simples e tem a proposta de servir para a maioria das bases linux.
 
 A única coisa necessária para facilitar a sua vida e fazer uma listagem dos pacotes instalado por você, depois disso é só colar o nome dos pacotes dentro da linha com:
 
