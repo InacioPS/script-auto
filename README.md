@@ -1,3 +1,10 @@
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow.svg)
+![Shellably](https://img.shields.io/badge/feito%20com-%F0%9F%A4%96%20x%20%F0%9F%92%BB-critical)
+
+[![Último commit](https://img.shields.io/github/last-commit/InacioPS/global-install)](https://github.com/InacioPS/global-install/commits/main)
+[![Releases](https://img.shields.io/github/v/release/InacioPS/global-install?label=release)](https://github.com/InacioPS/InacioPS/releases)
+[![Stars](https://img.shields.io/github/stars/InacioPS/global-install?style=social)](https://github.com/InacioPS/global-install/stargazers)
 # Script Auto - Automation Script for Package Installation
 
 ## Project Overview
