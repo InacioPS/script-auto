@@ -21,32 +21,7 @@ instalar_universal() {
 # Lista de pacotes oficiais do repositório
 PACOTES=(
     git
-    wget
-    curl
-    htop
-    btop
-    nvtop
-    flatpak
-    fastfetch
-    pavucontrol
-    firefox
-    fish
-    qbittorrent
-    obs-studio
-    telegram-desktop
     discord
-    steam
-    7zip
-    btrfs-assistant
-    fzf
-    gnome-calculator
-    gnome-text-editor
-    gparted
-    gthumb
-    mpv
-    nautilus-python
-    nautilus
-    obsidian
     unzip
 )
 
@@ -58,18 +33,10 @@ APPIMAGE=(
 # Lista de pacotes do AUR
 AUR_PACOTES=(
     spotify
-    onlyoffice
     protonplus
-    apple_cursor
-    backintime
-    dwarfs-bin
     freedownloadmanager-bin
-    gearlever
-    onlyoffice-bin
-    typora
     visual-studio-code-bin
     ttf-jetbrains-mono
-    asusctl
 )
 
 # Verifica a base da distro
